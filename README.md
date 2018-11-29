@@ -6,7 +6,7 @@
 * Use supervisor to manage tautulli process
 * Can choose a specific unix user to run tautulli inside docker
 * By default tautulli configuration files will be in a folder named 'tautulli' which will be contained in a docker volume /data
-
+* Optional volume 'plexlogs' used to connect plex logs
 
 ## Quick Usage
 
@@ -48,7 +48,7 @@ Current latest tag is version __v2.1.25__
 ### Volumes
 
 Inside container
-`/data/tautulli` will contain tautulli configuration
+`/data/tautulli` will contain medusa tautulli and files
 `/plexlogs` is the root folder of your plex logs
 
 If host `<data path>` or `<plex logs path>` does not exist, docker will create it automaticly with root user. You should use mkdir before launching docker to control ownership.
