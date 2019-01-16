@@ -12,7 +12,8 @@
 
 for running latest stable version of tautulli :
 
-	docker run --name tautulli -d -v $(pwd):/data -p 8181:8181 studioetrange/docker-tautulli
+	mkdir -p data
+	docker run --name tautulli -d -v $(pwd)/data:/data -p 8181:8181 studioetrange/docker-tautulli
 
 then go to http://localhost:8181
 
