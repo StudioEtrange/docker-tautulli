@@ -9,7 +9,7 @@ LABEL description "Tautulli on docker"
 
 # Service generic parameters
 ENV SERVICE_NAME tautulli
-ENV SERVICE_VERSION v2.1.29-beta
+ENV SERVICE_VERSION v2.1.27-beta
 # User id which will launch the service start command (NOTE : supervisord itself is run with root)
 ENV SERVICE_USER 0
 ENV SERVICE_PORT 8181
