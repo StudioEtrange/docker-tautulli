@@ -206,7 +206,7 @@ function github_releases() {
 	done
 
 	for e in $EXCLUDE_VERSION; do
-		result="$(echo $result | sed -e "s,[[:space:]]*$e[[:space:]]*,,")"
+		result="$(echo $result | sed -e "s,[[:space:]]*$e[[:space:]]*, ,")"
 	done
 	
 	local sorted
@@ -227,7 +227,7 @@ function github_tags() {
 	done
 
 	for e in $EXCLUDE_VERSION; do
-		result="$(echo $result | sed -e "s,[[:space:]]*$e[[:space:]]*,,")"
+		result="$(echo $result | sed -e "s,[[:space:]]*$e[[:space:]]*, ,")"
 	done
 	
 	local sorted
