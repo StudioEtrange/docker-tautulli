@@ -19,6 +19,15 @@ USE_TAG_AS_RELEASE=0
 # exclude these tag/release name
 EXCLUDE_VERSION=""
 
+# GITHUB AUTHENTIFICATION --------------------------------
+# use your account to request github api
+#	./update.sh username:password
+CURL_AUTH=
+GITHUB_BASIC_AUTH="$1"
+if [ ! -z "${GITHUB_BASIC_AUTH}" ]; then
+	CURL_AUTH="-u $GITHUB_BASIC_AUTH"
+fi
+
 # INITIALIZE ----------------------------
 version_order_option=
 if [ "$VERSION_INVERSE_LAST_CHAR" = "ON" ]; then
@@ -200,9 +209,9 @@ function github_releases() {
 	local max=$1
 
 	local result=""
-	local last_page=$(curl -i -sL "https://api.github.com/repos/$GITHUB_REPO/releases" | grep rel=\"last\" | cut -d "," -f 2 | cut -d "=" -f 2 | cut -d ">" -f 1)
+	local last_page=$(curl $CURL_AUTH -i -sL "https://api.github.com/repos/$GITHUB_REPO/releases" | grep rel=\"last\" | cut -d "," -f 2 | cut -d "=" -f 2 | cut -d ">" -f 1)
 	for i in $(seq 1 $last_page); do 
-		result="$result $(curl -sL https://api.github.com/repos/$GITHUB_REPO/releases?page=$i | grep tag_name | cut -d '"' -f 4)"
+		result="$result $(curl $CURL_AUTH -sL https://api.github.com/repos/$GITHUB_REPO/releases?page=$i | grep tag_name | cut -d '"' -f 4)"
 	done
 
 	for e in $EXCLUDE_VERSION; do
@@ -221,9 +230,9 @@ function github_tags() {
 	local max=$1
 
 	local result=""
-	local last_page=$(curl -i -sL "https://api.github.com/repos/$GITHUB_REPO/tags" | grep rel=\"last\" | cut -d "," -f 2 | cut -d "=" -f 2 | cut -d ">" -f 1)
+	local last_page=$(curl $CURL_AUTH -i -sL "https://api.github.com/repos/$GITHUB_REPO/tags" | grep rel=\"last\" | cut -d "," -f 2 | cut -d "=" -f 2 | cut -d ">" -f 1)
 	for i in $(seq 1 $last_page); do 
-		result="$result $(curl -sL https://api.github.com/repos/$GITHUB_REPO/tags?page=$i | grep name | cut -d '"' -f 4)"
+		result="$result $(curl $CURL_AUTH -sL https://api.github.com/repos/$GITHUB_REPO/tags?page=$i | grep name | cut -d '"' -f 4)"
 	done
 
 	for e in $EXCLUDE_VERSION; do
