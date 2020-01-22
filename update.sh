@@ -277,6 +277,12 @@ rm -Rf "ver"
 [ "$USE_TAG_AS_RELEASE" = "1" ] && releases=$(github_tags)
 [ ! "$USE_TAG_AS_RELEASE" = "1" ] && releases=$(github_releases)
 
+# copy latest release
+mkdir -p "ver/latest"
+cp -f supervisord* "ver/latest"
+cp -f Dockerfile "ver/latest/Dockerfile"
+cp -f docker-entrypoint.sh "ver/latest/docker-entrypoint.sh"
+
 for rel in $releases; do
 	version_full_number="$rel"
 	version_number=$(echo $version_full_number | sed -e "s,$FILTER_VERSION_NAME,,g")
