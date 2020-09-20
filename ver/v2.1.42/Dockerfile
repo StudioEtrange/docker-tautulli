@@ -80,9 +80,9 @@ RUN curl -k -SL "https://github.com/Tautulli/Tautulli/archive/${SERVICE_VERSION}
 
 # SUPERVISOR -------------------------------------------------------
 # add supervisor default configuration
-COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY files/supervisord.conf /etc/supervisor/supervisord.conf
 # add supervisor service configuration
-COPY supervisord-${SERVICE_NAME}.conf /etc/supervisor/conf.d/supervisord-${SERVICE_NAME}.conf
+COPY files/supervisord-${SERVICE_NAME}.conf /etc/supervisor/conf.d/supervisord-${SERVICE_NAME}.conf
 
 
 # DOCKER RUN PARAMETERS ----------------------------------------------
@@ -98,7 +98,7 @@ EXPOSE 9999
 EXPOSE ${SERVICE_PORT}
 
 # entrypoint
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY files/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 
