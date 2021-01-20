@@ -1,5 +1,8 @@
 # docker tautulli by StudioEtrange
 
+* NOTE : this image will no longer provided version after v2.6.x because of python2 support dropped
+
+
 * Run tautulli inside a docker container built upon debian
 * Based on tautulli github repository
 * Choice of tautulli version
@@ -7,6 +10,8 @@
 * Can choose a specific unix user to run tautulli inside docker
 * By default tautulli configuration files will be in a folder named 'tautulli' which will be contained in a docker volume /data
 * Optional volume 'plexlogs' used to connect plex logs
+
+
 
 ## Quick Usage
 
@@ -21,9 +26,9 @@ then go to http://localhost:8181
 
 Pre-setted buildable docker tags for studioetrange/docker-tautulli:__TAG__
 
-	latest, v2.6.4, v2.6.3, v2.6.2, v2.6.1, v2.6.0, v2.6.0-beta, v2.5.6, v2.5.5, v2.5.4, v2.5.3, v2.5.2, v2.5.2-beta, v2.5.1-beta, v2.5.0-beta, v2.2.4, v2.2.3, v2.2.3-beta, v2.2.2-beta, v2.2.1, v2.2.0, v2.2.0-beta, v2.1.44, v2.1.43, v2.1.42
+	latest, v2.6.5, v2.6.4, v2.6.3, v2.6.2, v2.6.1, v2.6.0, v2.6.0-beta, v2.5.6, v2.5.5, v2.5.4, v2.5.3, v2.5.2, v2.5.2-beta, v2.5.1-beta, v2.5.0-beta, v2.2.4, v2.2.3, v2.2.3-beta, v2.2.2-beta, v2.2.1, v2.2.0, v2.2.0-beta, v2.1.44, v2.1.43, v2.1.42
 
-Current latest tag is version __v2.6.4__
+Current latest tag is version __v2.6.5__
 
 ## Instruction
 
